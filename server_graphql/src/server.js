@@ -19,7 +19,7 @@ app.get('/hello', async (req, res) => {
 });
 server.applyMiddleware({ app });
 
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 3002;
 
 app.listen({ port: PORT }, () =>
   console.log(`Server ready at http://localhost:${PORT}${server.graphqlPath}`),

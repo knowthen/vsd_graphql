@@ -71,5 +71,3 @@ typings/
 # dotenv environment variables file
 .env
 
-
-web/src/**/*.css

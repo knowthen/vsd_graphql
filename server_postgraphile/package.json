@@ -1,0 +1,32 @@
+{
+  "name": "vsd-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./src/server.js --watch . --exec babel-node",
+    "migrate-create": "db-migrate create --sql-file -m ./migrations",
+    "migrate-up": "db-migrate up -m ./migrations",
+    "migrate-down": "db-migrate down -m ./migrations"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "6.26.0",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {
+    "db-migrate": "^0.11.1",
+    "db-migrate-pg": "^0.4.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "pg": "^7.4.3",
+    "postgraphile": "^4.0.0-rc.4",
+    "ramda": "^0.25.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": ""
+}

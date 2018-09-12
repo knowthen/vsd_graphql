@@ -2,21 +2,24 @@ import React from 'react';
 import { map } from 'ramda';
 import KanbanList from './KanbanList';
 
-const KanbanBoard = ({ lists }) => {
+const KanbanBoard = ({ lists, boardName }) => {
   if (!lists || lists.length === 0) return null;
   return (
-    <section className="section">
-      <div className="container">
-        <div className="columns content">
-          {map(
-            list => (
-              <KanbanList key={list.id} list={list} />
-            ),
-            lists,
-          )}
+    <React.Fragment>
+      <section className="section">
+        <div className="container">
+          <h1 className="title is-size-3">{boardName}</h1>
+          <div className="columns content">
+            {map(
+              list => (
+                <KanbanList key={list.id} list={list} />
+              ),
+              lists,
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   );
 };
 export default KanbanBoard;

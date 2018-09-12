@@ -10195,3 +10195,7 @@ h5 {
   vertical-align: middle;
   display: table-cell;
 }
+
+.section {
+  padding-top: 1.5rem;
+}

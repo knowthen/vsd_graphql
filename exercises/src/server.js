@@ -1,15 +1,13 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import DataLoader from 'dataloader';
 import typeDefs from './typedefs';
 import resolvers from './resolvers';
-import loaders from './loaders';
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: () => ({
-    loaders: loaders(),
-  }),
+  context: () => ({}),
 });
 
 const app = express();

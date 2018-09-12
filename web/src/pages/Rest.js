@@ -4,7 +4,7 @@ import * as R from 'ramda';
 import { KanbanBoard, Loading } from '../components';
 
 const isProd = process.env.REACT_APP_STAGE === 'production';
-const url = isProd ? '??' : 'http://localhost:4001';
+const url = isProd ? '??' : 'http://localhost:3001';
 const lists = [
   {
     id: 1,
@@ -19,13 +19,13 @@ const get = async url => {
   const result = await axios.get(url);
   return result.data;
 };
+const getBoard = boardId => get(`${url}/boards/${boardId}`);
 const getLists = boardId => get(`${url}/boards/${boardId}/lists`);
 const getItems = listId => get(`${url}/lists/${listId}/items`);
 const getComments = itemId => get(`${url}/items/${itemId}/comments`);
 
-const queryLists = async id => {
-  // const { data: board } = await axios.get(`${url}/boards/${id}`);
-  const lists = await getLists(id);
+const queryBoard = async id => {
+  const [board, lists] = await Promise.all([getBoard(id), getLists(id)]);
   const itemPromises = R.map(list => {
     return getItems(list.id);
   }, lists);
@@ -43,25 +43,26 @@ const queryLists = async id => {
     }, items[idx]);
     return { ...list, items: updatedItems };
   }, lists);
-  return result;
+  return [board, result];
 };
 
 class Rest extends Component {
   state = {
     loading: true,
     lists: [],
+    boardName: '',
   };
   async componentDidMount() {
     const id = R.path(['props', 'match', 'params', 'id'], this);
-    const lists = await queryLists(id);
-    this.setState({ lists, loading: false });
+    const [board, lists] = await queryBoard(id);
+    this.setState({ lists, loading: false, boardName: board.name });
   }
   render() {
-    const { lists, loading } = this.state;
+    const { lists, loading, boardName } = this.state;
     if (loading) {
       return <Loading />;
     }
-    return <KanbanBoard lists={lists} />;
+    return <KanbanBoard lists={lists} boardName={boardName} />;
   }
 }
 

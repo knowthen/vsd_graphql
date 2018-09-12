@@ -4,7 +4,7 @@ import * as R from 'ramda';
 import { Link } from 'react-router-dom';
 
 const isProd = process.env.REACT_APP_STAGE === 'production';
-const url = isProd ? '??' : 'http://localhost:4001';
+const url = isProd ? '??' : 'http://localhost:3001';
 
 const get = async url => {
   const result = await axios.get(url);

@@ -1,4 +1,4 @@
-import { allBoards, boardById } from './dal';
+import {} from './dal';
 
 const resolvers = {};
 export default resolvers;

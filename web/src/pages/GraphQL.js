@@ -3,8 +3,10 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { KanbanBoard, Loading } from '../components';
 
-const isProd = process.env.REACT_APP_STAGE === 'production';
-const url = isProd ? '??' : 'http://localhost:3002/graphql';
+const isProd = process.env.NODE_ENV === 'production';
+const url = isProd
+  ? 'http://kanban.trythen.com/graphql'
+  : 'http://localhost:3002/graphql';
 
 const query = `
 query Board($id: ID!){

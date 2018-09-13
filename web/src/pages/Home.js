@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { Link } from 'react-router-dom';
 
-const isProd = process.env.REACT_APP_STAGE === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 const url = isProd ? 'http://kanban.trythen.com' : 'http://localhost:3001';
 
 const get = async url => {

@@ -31,7 +31,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var dotEnvPath = _path2.default.join(__dirname, '..', '.env');
 _dotenv2.default.config({ path: dotEnvPath });
 
-console.log(process.env.PG_HOST);
 var pool = new _pg.Pool({
   host: process.env.PG_HOST,
   database: process.env.PG_DATABASE,

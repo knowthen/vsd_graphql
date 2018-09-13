@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 const dotEnvPath = path.join(__dirname, '..', '.env');
 dotenv.config({ path: dotEnvPath });
 
-console.log(process.env.PG_HOST);
 const pool = new Pool({
   host: process.env.PG_HOST,
   database: process.env.PG_DATABASE,

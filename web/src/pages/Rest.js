@@ -3,19 +3,7 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { KanbanBoard, Loading } from '../components';
 
-const isProd = process.env.NODE_ENV === 'production';
-const url = isProd
-  ? 'http://kanban.trythen.com/api'
-  : 'http://localhost:3001/api';
-const lists = [
-  {
-    id: 1,
-    name: 'Todo',
-    items: [
-      { id: 1, name: 'Do this', comments: [{ id: 1, body: 'make sure you' }] },
-    ],
-  },
-];
+const url = 'http://localhost:3001';
 
 const get = async url => {
   const result = await axios.get(url);

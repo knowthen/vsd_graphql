@@ -4,7 +4,9 @@ import * as R from 'ramda';
 import { Link } from 'react-router-dom';
 
 const isProd = process.env.NODE_ENV === 'production';
-const url = isProd ? 'http://kanban.trythen.com' : 'http://localhost:3001';
+const url = isProd
+  ? 'http://kanban.trythen.com/api'
+  : 'http://localhost:3001/api';
 
 const get = async url => {
   const result = await axios.get(url);

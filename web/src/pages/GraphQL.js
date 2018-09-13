@@ -5,8 +5,8 @@ import { KanbanBoard, Loading } from '../components';
 
 const isProd = process.env.NODE_ENV === 'production';
 const url = isProd
-  ? 'http://kanban.trythen.com/graphql'
-  : 'http://localhost:3002/graphql';
+  ? 'http://kanban.trythen.com/g/graphql'
+  : 'http://localhost:3002/g/graphql';
 
 const query = `
 query Board($id: ID!){

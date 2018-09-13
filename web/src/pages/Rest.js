@@ -4,7 +4,9 @@ import * as R from 'ramda';
 import { KanbanBoard, Loading } from '../components';
 
 const isProd = process.env.NODE_ENV === 'production';
-const url = isProd ? 'http://kanban.trythen.com/api' : 'http://localhost:3001';
+const url = isProd
+  ? 'http://kanban.trythen.com/api'
+  : 'http://localhost:3001/api';
 const lists = [
   {
     id: 1,
